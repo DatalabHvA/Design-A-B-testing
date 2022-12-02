@@ -7,6 +7,7 @@ import random
 import numpy as np
 from matplotlib import pyplot as plt
 import argparse
+import time
 
 p = argparse.ArgumentParser()
 p.add_argument('-n', action = 'store', type = int, dest = 'n', default = 25)
@@ -20,11 +21,14 @@ os.chdir(dname + '/designs/'+ getattr(args,'folder'))
 image_list = []
 filename_list = [] 
 
-z = cv2.imread("./../z.png")
+z = cv2.imread(dname+"/img/z.png")
 z = cv2.resize(z, (900, 900))
 
-m = cv2.imread("./../m.png")
+m = cv2.imread(dname+"/img/m.png")
 m = cv2.resize(m, (900, 900))
+
+dot = cv2.imread(dname+"/img/dot.png")
+dot = cv2.resize(dot, (1800, 900))
 
 for filename in glob.glob("*.png"):
     img = cv2.imread(filename)
@@ -45,7 +49,9 @@ for i in range(getattr(args,'n')):
     while written == False:
         winname = "window"
         cv2.namedWindow(winname)        # Create a named window
-        cv2.moveWindow(winname, 60,30)  # Move it to (40,30)
+        cv2.moveWindow(winname, 60,30)  # Move it to (60,30)
+        cv2.imshow(winname, dot)
+        cv2.waitKey(1000)
         cv2.imshow(winname, image)
         key = cv2.waitKey(0)
         char_key = chr(key%256)
@@ -56,7 +62,7 @@ for i in range(getattr(args,'n')):
             score.append(os.path.splitext(filename_list[1-letter])[0])
             written = True
         else:
-            ctypes.windll.user32.MessageBoxW(0, "path does not exist", "Error", 1)
+            ctypes.windll.user32.MessageBoxW(0, "kies één van de getoonde letters", "Error", 1)
     cv2.destroyAllWindows()
 
 D = {x:score.count(x) for x in set(score)}
