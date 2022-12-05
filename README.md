@@ -16,6 +16,6 @@ en optioneel stel je met -n het aantal herhalingen in (default -n 25). Als je he
 
 De ontwerpen worden nu in verschillende volgordes en combinaties getoond. Druk telkens op de toets op je toetsenbord die hoort bij de letter die je het snelste opvalt ('z' of 'm'). NB: je moet dus niet kiezen voor links/rechts maar voor de letter zelf! Aan het eind krijg je de resultaten te zien van welk ontwerp je het vaakst hebt gekozen. Gebruik deze feedback om je ontwerp te verbeteren en test het nog een keer!
 
-Als het venster niet in je beeldscherm past kan je de grootte aanpassen door via -s een schaalfactor mee te geven bij het uitvoeren (bijv -s 1.5). 
+Als het venster niet in je beeldscherm past kan je de grootte aanpassen door via -s een schaalfactor mee te geven bij het uitvoeren (bijv ```python design_AB_test.py -folder test1 -s 1.5``` om het venster 1.5x kleiner te makem). 
 
 Voor vragen of verbeteringen van dit script, stuur een email naar p.c.bons@hva.nl. 
