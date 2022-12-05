@@ -12,7 +12,7 @@ import time
 p = argparse.ArgumentParser()
 p.add_argument('-n', action = 'store', type = int, dest = 'n', default = 25)
 p.add_argument('-folder', action = 'store', dest = 'folder', default = 'test1')
-p.add_argument('-s', action = 'store', type = int, dest = 's', default = 1)
+p.add_argument('-s', action = 'store', type = float, dest = 's', default = 1)
 args = p.parse_args()
 
 abspath = os.path.abspath(__file__)
