@@ -12,6 +12,7 @@ import time
 p = argparse.ArgumentParser()
 p.add_argument('-n', action = 'store', type = int, dest = 'n', default = 25)
 p.add_argument('-folder', action = 'store', dest = 'folder', default = 'test1')
+p.add_argument('-s', action = 'store', type = int, dest = 's', default = 1)
 args = p.parse_args()
 
 abspath = os.path.abspath(__file__)
@@ -21,18 +22,20 @@ os.chdir(dname + '/designs/'+ getattr(args,'folder'))
 image_list = []
 filename_list = [] 
 
+img_size = int(np.floor(900/getattr(args,'s')))
+
 z = cv2.imread(dname+"/img/z.png")
-z = cv2.resize(z, (900, 900))
+z = cv2.resize(z, (img_size, img_size))
 
 m = cv2.imread(dname+"/img/m.png")
-m = cv2.resize(m, (900, 900))
+m = cv2.resize(m, (img_size, img_size))
 
 dot = cv2.imread(dname+"/img/dot.png")
-dot = cv2.resize(dot, (1800, 900))
+dot = cv2.resize(dot, (2*img_size, img_size))
 
 for filename in glob.glob("*.png"):
     img = cv2.imread(filename)
-    imS = cv2.resize(img, (900, 900))
+    imS = cv2.resize(img, (img_size, img_size))
     image_list.append(imS)
     filename_list.append(filename)
 
